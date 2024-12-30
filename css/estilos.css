@@ -1,102 +1,186 @@
 :root {
-  --ancho: 50%;
-  --padding: 20px;
-  --color: rgb(0, 187, 146);
+  --ancho: 90%; /* Reducido para mejorar visualización móvil */
+  --max-ancho: 600px;
+  --padding: 15px;
+  --color: rgb(0, 123, 255); /* Azul claro */
+  --fondo: #ffffff; /* Blanco puro para contraste */
+  --text-color: rgb(34, 43, 58);
+  --border-color: rgba(0, 0, 0, 0.1);
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 h1 {
-  font-size: 40px;
-  color: rgb(34, 43, 58);
+  font-size: 36px;
+  color: var(--text-color);
   padding: 20px;
-  text-shadow: 1px 1px 1px rgb(110, 110, 110);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
   font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
+
 body {
-  background: #f1f1f1;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
+  background: var(--fondo);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
 }
+
 section {
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 .container {
   width: var(--ancho);
+  max-width: var(--max-ancho);
   background: var(--color);
   padding: var(--padding);
-  border-bottom: 5px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 #dni {
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   outline: none;
   border: none;
-  border-bottom: 2px solid rgb(247, 247, 247);
+  border-bottom: 2px solid var(--border-color);
   background: none;
-  font-size: 38px;
-  color: white;
-  font-weight: bold;
+  font-size: 22px;
+  color: #ffffff;
   text-align: center;
 }
+
+#dni::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .button button {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  background: rgba(0, 0, 0, 0.425);
+  padding: 12px;
+  margin-top: 10px;
+  background: #0069d9; /* Azul más oscuro */
+  border: none;
   outline: none;
   cursor: pointer;
-  color: white;
-  font-size: 25px;
+  color: #ffffff;
+  font-size: 20px;
   font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
-#dni::placeholder {
-  color: white;
-  opacity: 0.3;
+
+.button button:hover {
+  background: #004bb5;
 }
 
 /* RESULTADO */
 
 .resultado {
   width: var(--ancho);
+  max-width: var(--max-ancho);
   padding: var(--padding);
   background: var(--color);
+  margin-top: 20px;
+  border-radius: 10px;
 }
+
 .resultado h2 {
-  color: rgb(0, 26, 41);
-  font-size: 20px;
+  color: var(--fondo);
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
 }
+
 .resultado .dni,
-.nombre,
-.apellido,
-.cui {
+.resultado .nombre,
+.resultado .apellido,
+.resultado .cui {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  border-bottom: 3px solid white;
+  border-bottom: 2px solid var(--fondo);
+  padding: 10px 0;
 }
+
 .label {
-  width: 8%;
-  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--fondo);
 }
+
 .res input {
-  width: 92%;
+  width: 80%;
   background: none;
   border: none;
   outline: none;
-
   padding: 10px;
-  font-size: 20px;
-  color: white;
+  font-size: 16px;
+  color: var(--fondo);
   font-weight: bold;
-  text-align: left;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  #dni {
+    font-size: 18px;
+  }
+
+  .button button {
+    font-size: 18px;
+  }
+
+  .resultado h2 {
+    font-size: 16px;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+
+  .res input {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --ancho: 95%;
+  }
+
+  h1 {
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  .container,
+  .resultado {
+    padding: 10px;
+  }
+
+  #dni {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .button button {
+    font-size: 16px;
+    padding: 8px;
+  }
 }
